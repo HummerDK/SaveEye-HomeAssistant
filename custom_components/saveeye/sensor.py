@@ -492,7 +492,9 @@ SENSORS: list[SaveEyeSensorDescription] = [
         name="Extender 1 Active Cumulative Energy Consumption",
         json_path=("extendersData", 0, "activeTotalConsumption"),
         device_class=SensorDeviceClass.ENERGY,
-        state_class=SensorStateClass.MEASUREMENT,
+        # FIX: was MEASUREMENT. A cumulative energy counter must use TOTAL_INCREASING
+        # (or TOTAL with last_reset), otherwise Home Assistant reports a missing last_reset.
+        state_class=SensorStateClass.TOTAL_INCREASING,
         unit="kWh",
         device_identifier_suffix="remote",
         value_transform=lambda value: float(value) / 1000.0 if value is not None else None,
