@@ -495,7 +495,7 @@ SENSORS: list[SaveEyeSensorDescription] = [
         # FIX: was MEASUREMENT. A cumulative energy counter must use TOTAL_INCREASING
         # (or TOTAL with last_reset), otherwise Home Assistant reports a missing last_reset.
         state_class=SensorStateClass.TOTAL_INCREASING,
-        unit="kWh",
+        unit=UnitOfEnergy.WATT_HOUR,
         device_identifier_suffix="remote",
         value_transform=lambda value: float(value) / 1000.0 if value is not None else None,
     ),
