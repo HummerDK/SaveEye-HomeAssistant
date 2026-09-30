@@ -2,6 +2,6 @@
   "name": "SaveEye",
   "filename": "saveeye",
   "render_readme": true,
-  "hide_default_branch": false,
+  "hide_default_branch": true,
   "homeassistant": "2024.1.0"
 }
